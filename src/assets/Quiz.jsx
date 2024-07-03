@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Questions } from "../helpers/QuestionBank";
 import { QuizContext } from "../helpers/Contexts";
+import { Body, Button, Options } from "../Styles/app.style";
 
 const Quiz = () => {
   const { score, setScore, setGameState } = useContext(QuizContext);
@@ -23,29 +24,29 @@ const Quiz = () => {
   };
 
   return (
-    <div className="Quiz">
+    <Body justify="space-between">
       <h1>{Questions[currentQuestion].prompt}</h1>
-      <div className="options">
-        <button onClick={() => setOptionChosen("a")}>
+      <Options>
+        <Button onClick={() => setOptionChosen("a")}>
           {Questions[currentQuestion].optionA}
-        </button>
-        <button onClick={() => setOptionChosen("b")}>
+        </Button>
+        <Button onClick={() => setOptionChosen("b")}>
           {Questions[currentQuestion].optionB}
-        </button>
-        <button onClick={() => setOptionChosen("c")}>
+        </Button>
+        <Button onClick={() => setOptionChosen("c")}>
           {Questions[currentQuestion].optionC}
-        </button>
-        <button onClick={() => setOptionChosen("d")}>
+        </Button>
+        <Button onClick={() => setOptionChosen("d")}>
           {Questions[currentQuestion].optionD}
-        </button>
-      </div>
+        </Button>
+      </Options>
 
       {currentQuestion == Questions.length - 1 ? (
-        <button onClick={finishQuiz}> Finish Quiz</button>
+        <Button onClick={finishQuiz}> Finish Quiz</Button>
       ) : (
-        <button onClick={nextQuestion}> Next Question</button>
+        <Button onClick={nextQuestion}> Next Question</Button>
       )}
-    </div>
+    </Body>
   );
 };
 

@@ -3,7 +3,7 @@ import MainMenu from "./assets/MainMenu";
 import Quiz from "./assets/Quiz";
 import EndScreen from "./assets/EndScreen";
 import { QuizContext } from "./helpers/Contexts";
-import "./App.css";
+import { Container } from "./Styles/app.style";
 
 export default function App() {
   const [gameState, setGameState] = useState("menu");
@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <>
-      <div className="App">
+      <Container>
         <h1>Quiz App</h1>
         <QuizContext.Provider
           value={{ gameState, setGameState, score, setScore }}
@@ -21,7 +21,7 @@ export default function App() {
           {gameState === "quiz" && <Quiz />}
           {gameState === "endScreen" && <EndScreen />}
         </QuizContext.Provider>
-      </div>
+      </Container>
     </>
   );
 }
